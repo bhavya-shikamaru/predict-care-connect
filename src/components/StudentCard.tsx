@@ -10,6 +10,7 @@ import {
   User,
   Heart
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Student {
   student_id: string;
@@ -32,6 +33,8 @@ interface StudentCardProps {
 }
 
 export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
+  const navigate = useNavigate();
+
   const getRiskColor = (level: string) => {
     switch (level) {
       case "high": return "risk-high";
@@ -48,6 +51,11 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
       case "low": return <TrendingUp className="h-4 w-4" />;
       default: return <AlertTriangle className="h-4 w-4" />;
     }
+  };
+
+  const handleViewDetails = () => {
+    onViewDetails(student);
+    navigate(`/student/${student.student_id}`);
   };
 
   return (
@@ -125,7 +133,7 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
 
         {/* Action Button */}
         <Button 
-          onClick={() => onViewDetails(student)}
+          onClick={handleViewDetails}
           variant="outline" 
           className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
         >

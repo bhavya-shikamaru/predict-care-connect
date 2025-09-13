@@ -3,21 +3,45 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Landing } from "@/pages/Landing";
 import { Login } from "@/pages/Login";
 import { Dashboard } from "@/pages/Dashboard";
 import { StudentUpload } from "@/pages/StudentUpload";
+import { StudentDetail } from "@/pages/StudentDetail";
 import NotFound from "./pages/NotFound";
 import { sampleStudents, type Student } from "@/utils/mockData";
 
 const queryClient = new QueryClient();
 
+// Wrapper component to handle student detail routing
+const StudentDetailWrapper = ({ 
+  user, 
+  students, 
+  onLogin 
+}: { 
+  user: any; 
+  students: Student[]; 
+  onLogin: (userData: any) => void; 
+}) => {
+  const { studentId } = useParams();
+  const student = students.find(s => s.student_id === studentId);
+
+  if (!user) {
+    return <Login onLogin={onLogin} />;
+  }
+
+  if (!student) {
+    return <NotFound />;
+  }
+
+  return <StudentDetail student={student} />;
+};
+
 const App = () => {
   const [user, setUser] = useState<{ name: string; role: string; email: string } | null>(null);
   const [students, setStudents] = useState<Student[]>(sampleStudents);
-  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   const handleLogin = (userData: { name: string; role: string; email: string }) => {
     setUser(userData);
@@ -32,8 +56,7 @@ const App = () => {
   };
 
   const handleStudentSelect = (student: Student) => {
-    setSelectedStudent(student);
-    // Navigate to student detail view (to be implemented)
+    // This will be handled by the navigation in StudentCard
   };
 
   return (
@@ -68,6 +91,16 @@ const App = () => {
                   ) : (
                     <Login onLogin={handleLogin} />
                   )
+                } 
+              />
+              <Route 
+                path="/student/:studentId" 
+                element={
+                  <StudentDetailWrapper 
+                    user={user} 
+                    students={students} 
+                    onLogin={handleLogin} 
+                  />
                 } 
               />
               <Route path="*" element={<NotFound />} />
