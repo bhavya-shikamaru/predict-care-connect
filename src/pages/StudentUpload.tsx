@@ -190,7 +190,7 @@ STU003,Mike Johnson,11-C,0.92,1,88.4,91,1,0`;
     setDragActive(false);
     
     const file = e.dataTransfer.files[0];
-    if (file && file.type === 'text/csv') {
+    if (file && (file.type === 'text/csv' || file.name.endsWith('.csv'))) {
       handleFileUpload(file);
     } else {
       toast({

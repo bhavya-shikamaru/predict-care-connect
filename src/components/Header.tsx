@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { GraduationCap, LogOut, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
   onLogout?: () => void;
@@ -12,7 +13,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
   const isLanding = location.pathname === "/";
 
   return (
-    <header className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-soft">
+    <header className="bg-card/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-soft dark:bg-card/90">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2 group">
           <div className="p-2 bg-gradient-hero rounded-lg shadow-soft group-hover:shadow-primary transition-smooth">
@@ -56,6 +57,8 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          
           {user ? (
             <>
               <div className="flex items-center space-x-2 text-sm">

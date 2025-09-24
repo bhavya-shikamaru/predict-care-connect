@@ -209,53 +209,106 @@ export const sampleStudents: Student[] = [
   }
 ];
 
-// Intervention suggestions based on risk factors
+// Enhanced counselling recommendations with specific roles
 export const getInterventionSuggestions = (risk_factors: string[]): Array<{
   type: string;
   title: string;
   description: string;
   priority: "high" | "medium" | "low";
   icon: string;
+  assignedTo: string;
+  actionSteps: string[];
 }> => {
   const interventions = [];
 
   if (risk_factors.some(f => f.includes("attendance") || f.includes("absent"))) {
     interventions.push({
       type: "attendance",
-      title: "Attendance Intervention",
-      description: "Schedule meeting with student and parent to address attendance issues. Consider flexible scheduling or transportation support.",
+      title: "Mentor Intervention - Attendance",
+      description: "Assign dedicated mentor to work closely with student on attendance patterns and underlying issues.",
       priority: "high" as const,
-      icon: "📅"
+      icon: "📅",
+      assignedTo: "Student Mentor",
+      actionSteps: [
+        "Schedule one-on-one meeting with student within 48 hours",
+        "Identify root causes of absenteeism (transportation, health, family issues)",
+        "Create personalized attendance improvement plan",
+        "Set up daily check-ins for first week",
+        "Coordinate with parents for home-school communication"
+      ]
     });
   }
 
   if (risk_factors.some(f => f.includes("score") || f.includes("performance"))) {
     interventions.push({
       type: "academic",
-      title: "Academic Support",
-      description: "Arrange tutoring sessions, peer mentoring, or additional teacher support. Review learning methods and identify knowledge gaps.",
+      title: "Subject Teacher Support",
+      description: "Direct intervention by subject teachers to address specific academic challenges and knowledge gaps.",
       priority: "high" as const,
-      icon: "📊"
+      icon: "📊",
+      assignedTo: "Subject Teacher",
+      actionSteps: [
+        "Conduct diagnostic assessment to identify specific learning gaps",
+        "Develop individualized learning plan with measurable goals",
+        "Arrange after-school tutoring sessions 2x per week",
+        "Provide alternative learning materials and methods",
+        "Weekly progress monitoring with feedback to student and parents"
+      ]
     });
   }
 
   if (risk_factors.some(f => f.includes("payment") || f.includes("fee"))) {
     interventions.push({
       type: "financial",
-      title: "Financial Aid Support",
-      description: "Connect family with financial aid resources, payment plans, or scholarship opportunities to reduce financial barriers.",
+      title: "Financial Counselor Support",
+      description: "Connect family with financial resources and develop sustainable payment solutions.",
       priority: "medium" as const,
-      icon: "💰"
+      icon: "💰",
+      assignedTo: "Financial Counselor",
+      actionSteps: [
+        "Schedule confidential meeting with family within 3 days",
+        "Assess family's financial situation and available resources",
+        "Apply for available scholarships and financial aid programs",
+        "Set up manageable payment plan with school administration",
+        "Connect with community resources for additional support"
+      ]
     });
   }
 
   if (risk_factors.some(f => f.includes("socioeconomic"))) {
     interventions.push({
       type: "support",
-      title: "Comprehensive Support",
-      description: "Provide holistic support including counseling, resource connections, and family engagement programs.",
+      title: "School Counselor - Holistic Support",
+      description: "Comprehensive support addressing social, emotional, and environmental factors affecting student success.",
       priority: "medium" as const,
-      icon: "🤝"
+      icon: "🤝",
+      assignedTo: "School Counselor",
+      actionSteps: [
+        "Complete comprehensive needs assessment",
+        "Coordinate with social services if needed",
+        "Establish peer support group participation",
+        "Connect family with community resources (food bank, healthcare)",
+        "Monitor student's social-emotional wellbeing weekly"
+      ]
+    });
+  }
+
+  // Additional specialized interventions
+  if (risk_factors.length >= 3) {
+    interventions.push({
+      type: "comprehensive",
+      title: "Multi-Disciplinary Team Approach",
+      description: "Coordinate comprehensive intervention involving multiple specialists for high-risk students.",
+      priority: "high" as const,
+      icon: "👥",
+      assignedTo: "Student Success Team",
+      actionSteps: [
+        "Convene emergency student success team meeting within 24 hours",
+        "Assign case manager to coordinate all interventions",
+        "Develop comprehensive intervention plan with timeline",
+        "Schedule weekly team meetings to monitor progress",
+        "Establish crisis intervention protocol if needed"
+      ]
     });
   }
 

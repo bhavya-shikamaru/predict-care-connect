@@ -292,52 +292,72 @@ export const StudentDetail = ({ student }: StudentDetailProps) => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {interventions.map((intervention, index) => (
-                    <div key={index} className="p-4 border rounded-lg bg-card">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <span className="text-2xl">{intervention.icon}</span>
-                            <div>
-                              <h4 className="font-semibold text-foreground">{intervention.title}</h4>
-                              <Badge 
-                                variant="outline" 
-                                className={`${
-                                  intervention.priority === 'high' 
-                                    ? 'border-risk-high text-risk-high' 
-                                    : 'border-risk-medium text-risk-medium'
-                                }`}
-                              >
-                                {intervention.priority} priority
-                              </Badge>
-                            </div>
-                          </div>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {intervention.description}
-                          </p>
-                        </div>
-                        <div className="ml-4">
-                          {completedInterventions.includes(intervention.type) ? (
-                            <Badge variant="outline" className="border-risk-low text-risk-low">
-                              <CheckCircle className="h-3 w-3 mr-1" />
-                              Completed
-                            </Badge>
-                          ) : (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => markInterventionComplete(intervention.type)}
-                            >
-                              <Target className="h-4 w-4" />
-                              Mark Complete
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                 <div className="space-y-4">
+                   {interventions.map((intervention, index) => (
+                     <div key={index} className="p-4 border rounded-lg bg-card">
+                       <div className="flex items-start justify-between">
+                         <div className="flex-1">
+                           <div className="flex items-center space-x-3 mb-2">
+                             <span className="text-2xl">{intervention.icon}</span>
+                             <div>
+                               <h4 className="font-semibold text-foreground">{intervention.title}</h4>
+                               <div className="flex items-center space-x-2 mt-1">
+                                 <Badge 
+                                   variant="outline" 
+                                   className={`${
+                                     intervention.priority === 'high' 
+                                       ? 'border-risk-high text-risk-high' 
+                                       : intervention.priority === 'medium'
+                                       ? 'border-risk-medium text-risk-medium'
+                                       : 'border-risk-low text-risk-low'
+                                   }`}
+                                 >
+                                   {intervention.priority} priority
+                                 </Badge>
+                                 <Badge variant="secondary" className="text-xs">
+                                   👤 {intervention.assignedTo}
+                                 </Badge>
+                               </div>
+                             </div>
+                           </div>
+                           <p className="text-muted-foreground leading-relaxed mb-3">
+                             {intervention.description}
+                           </p>
+                           
+                           {/* Action Steps */}
+                           <div className="mt-3 p-3 bg-muted/20 rounded-lg">
+                             <h5 className="text-sm font-semibold text-foreground mb-2">Action Steps:</h5>
+                             <ul className="space-y-1">
+                               {intervention.actionSteps.map((step, stepIndex) => (
+                                 <li key={stepIndex} className="text-sm text-muted-foreground flex items-start">
+                                   <span className="text-primary mr-2 font-bold">•</span>
+                                   {step}
+                                 </li>
+                               ))}
+                             </ul>
+                           </div>
+                         </div>
+                         <div className="ml-4">
+                           {completedInterventions.includes(intervention.type) ? (
+                             <Badge variant="outline" className="border-risk-low text-risk-low">
+                               <CheckCircle className="h-3 w-3 mr-1" />
+                               Completed
+                             </Badge>
+                           ) : (
+                             <Button
+                               variant="outline"
+                               size="sm"
+                               onClick={() => markInterventionComplete(intervention.type)}
+                             >
+                               <Target className="h-4 w-4" />
+                               Mark Complete
+                             </Button>
+                           )}
+                         </div>
+                       </div>
+                     </div>
+                   ))}
+                 </div>
               </CardContent>
             </Card>
           </TabsContent>
