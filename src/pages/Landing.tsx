@@ -164,7 +164,7 @@ export const Landing = () => {
               Ready to Transform Student Outcomes?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join thousands of educators who are already using EduCare AI to identify at-risk students 
+              Join thousands of educators who are already using UMEED to identify at-risk students 
               and provide timely interventions that change lives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

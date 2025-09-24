@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Landing } from "@/pages/Landing";
 import { Login } from "@/pages/Login";
 import { Dashboard } from "@/pages/Dashboard";
+import { Students } from "@/pages/Students";
 import { StudentUpload } from "@/pages/StudentUpload";
 import { StudentDetail } from "@/pages/StudentDetail";
 import NotFound from "./pages/NotFound";
@@ -75,6 +76,19 @@ const App = () => {
                 element={
                   user ? (
                     <Dashboard 
+                      students={students} 
+                      onStudentSelect={handleStudentSelect}
+                    />
+                  ) : (
+                    <Login onLogin={handleLogin} />
+                  )
+                } 
+              />
+              <Route 
+                path="/students" 
+                element={
+                  user ? (
+                    <Students 
                       students={students} 
                       onStudentSelect={handleStudentSelect}
                     />

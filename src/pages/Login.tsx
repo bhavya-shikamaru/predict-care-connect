@@ -41,7 +41,7 @@ export const Login = ({ onLogin }: LoginProps) => {
       onLogin(user);
       
       toast({
-        title: "Welcome to EduCare AI! 🎉",
+        title: "Welcome to UMEED! 🎉",
         description: `Logged in successfully as ${role}. Let's help students succeed together.`,
       });
       
@@ -59,7 +59,7 @@ export const Login = ({ onLogin }: LoginProps) => {
               <GraduationCap className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome to EduCare AI</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome to UMEED</h1>
           <p className="text-muted-foreground">
             Sign in to start supporting student success with AI-powered insights
           </p>
