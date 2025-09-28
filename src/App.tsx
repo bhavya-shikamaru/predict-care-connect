@@ -11,6 +11,7 @@ import { Dashboard } from "@/pages/Dashboard";
 import { Students } from "@/pages/Students";
 import { StudentUpload } from "@/pages/StudentUpload";
 import { StudentDetail } from "@/pages/StudentDetail";
+import { Demo } from "@/pages/Demo";
 import NotFound from "./pages/NotFound";
 import { sampleStudents, type Student } from "@/utils/mockData";
 
@@ -70,6 +71,7 @@ const App = () => {
             <Header user={user} onLogout={handleLogout} />
             <Routes>
               <Route path="/" element={<Landing />} />
+              <Route path="/demo" element={<Demo />} />
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route 
                 path="/dashboard" 
