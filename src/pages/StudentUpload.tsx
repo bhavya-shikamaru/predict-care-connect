@@ -88,6 +88,7 @@ STU003,Mike Johnson,11-C,0.92,1,88.4,91,1,0`;
 
     const success: Student[] = [];
     const errors: Array<{ row: number; error: string }> = [];
+    const usedIds = new Set<string>(); // Track used IDs to ensure uniqueness
 
     for (let i = 1; i < lines.length; i++) {
       try {
@@ -125,11 +126,21 @@ STU003,Mike Johnson,11-C,0.92,1,88.4,91,1,0`;
           continue;
         }
 
-        // Generate AI predictions
-        const predictions = predictDropoutRisk(numericStudent);
+        // Ensure unique student ID
+        let uniqueId = numericStudent.student_id;
+        let counter = 1;
+        while (usedIds.has(uniqueId)) {
+          uniqueId = `${numericStudent.student_id}_${counter}`;
+          counter++;
+        }
+        usedIds.add(uniqueId);
+
+        // Generate AI predictions with unique ID
+        const studentWithUniqueId = { ...numericStudent, student_id: uniqueId };
+        const predictions = predictDropoutRisk(studentWithUniqueId);
         
         const fullStudent: Student = {
-          ...numericStudent,
+          ...studentWithUniqueId,
           ...predictions
         };
 
@@ -205,8 +216,12 @@ STU003,Mike Johnson,11-C,0.92,1,88.4,91,1,0`;
     e.preventDefault();
     
     try {
+      // Generate unique student ID with timestamp to avoid conflicts
+      const baseId = manualStudent.student_id || `STU${Date.now()}`;
+      const uniqueId = `${baseId}_${Date.now()}`;
+      
       const studentData = {
-        student_id: manualStudent.student_id,
+        student_id: uniqueId,
         name: manualStudent.name,
         klass: manualStudent.klass,
         attendance_rate_30: parseFloat(manualStudent.attendance_rate_30),

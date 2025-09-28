@@ -289,7 +289,7 @@ export const Demo = () => {
               </Link>
               <Link to="/upload">
                 <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-                  Upload Your Data
+                  Schedule Demo
                 </Button>
               </Link>
             </div>

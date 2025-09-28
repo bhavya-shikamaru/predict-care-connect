@@ -174,9 +174,11 @@ export const Landing = () => {
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-                Schedule Demo
-              </Button>
+              <Link to="/demo">
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                  Schedule Demo
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
