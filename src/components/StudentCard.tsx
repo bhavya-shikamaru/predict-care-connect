@@ -76,7 +76,10 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
             className={`bg-${getRiskColor(student.risk_level)}/10 border-${getRiskColor(student.risk_level)} text-${getRiskColor(student.risk_level)} font-medium`}
           >
             {getRiskIcon(student.risk_level)}
-            {student.risk_level.charAt(0).toUpperCase() + student.risk_level.slice(1)} Risk
+            {student.risk_level.charAt(0).toUpperCase() + student.risk_level.slice(1)} Risk / {
+              student.risk_level === 'high' ? 'उच्च जोखिम' :
+              student.risk_level === 'medium' ? 'मध्यम जोखिम' : 'कम जोखिम'
+            }
           </Badge>
         </div>
       </CardHeader>
@@ -84,7 +87,7 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
       <CardContent className="space-y-4">
         {/* Risk Score */}
         <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-          <span className="text-sm font-medium text-foreground">Dropout Risk</span>
+          <span className="text-sm font-medium text-foreground">Dropout Risk / ड्रॉपआउट जोखिम</span>
           <span className={`text-lg font-bold text-${getRiskColor(student.risk_level)}`}>
             {(student.risk_score * 100).toFixed(1)}%
           </span>
@@ -95,7 +98,7 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
           <div className="flex items-center space-x-2 p-2 bg-background rounded-lg border">
             <Calendar className="h-4 w-4 text-primary" />
             <div>
-              <p className="text-xs text-muted-foreground">Attendance</p>
+              <p className="text-xs text-muted-foreground">Attendance / उपस्थिति</p>
               <p className="text-sm font-semibold">{(student.attendance_rate_30 * 100).toFixed(0)}%</p>
             </div>
           </div>
@@ -103,7 +106,7 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
           <div className="flex items-center space-x-2 p-2 bg-background rounded-lg border">
             <TrendingUp className="h-4 w-4 text-accent" />
             <div>
-              <p className="text-xs text-muted-foreground">Avg Score</p>
+              <p className="text-xs text-muted-foreground">Avg Score / औसत अंक</p>
               <p className="text-sm font-semibold">{student.avg_score.toFixed(1)}</p>
             </div>
           </div>
@@ -112,7 +115,7 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
         {/* Risk Factors Preview */}
         {student.risk_factors.length > 0 && (
           <div className="space-y-2">
-            <p className="text-xs font-medium text-muted-foreground">Primary Risk Factors:</p>
+            <p className="text-xs font-medium text-muted-foreground">Primary Risk Factors / मुख्य जोखिम कारक:</p>
             <div className="flex flex-wrap gap-1">
               {student.risk_factors.slice(0, 2).map((factor, index) => (
                 <span 
@@ -138,7 +141,7 @@ export const StudentCard = ({ student, onViewDetails }: StudentCardProps) => {
           className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
         >
           <Heart className="h-4 w-4" />
-          View Details & Interventions
+          View Details & Interventions / विवरण और हस्तक्षेप देखें
         </Button>
       </CardContent>
     </Card>

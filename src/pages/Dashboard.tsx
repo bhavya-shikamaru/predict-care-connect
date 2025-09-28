@@ -55,9 +55,9 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
         {/* Page Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 space-y-4 lg:space-y-0">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Student Risk Dashboard</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Risk Analytics Dashboard / जोखिम विश्लेषण डैशबोर्ड</h1>
             <p className="text-muted-foreground">
-              Monitor student wellbeing and identify those who need support
+              Real-time insights and trends across all students / सभी छात्रों में वास्तविक समय की अंतर्दृष्टि और रुझान
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -86,18 +86,18 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <Card className="shadow-soft animate-fade-in">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Students</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Students / कुल छात्र</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground">{riskStats.total}</div>
-              <p className="text-xs text-muted-foreground">Currently enrolled</p>
+              <p className="text-xs text-muted-foreground">Currently enrolled / वर्तमान में नामांकित</p>
             </CardContent>
           </Card>
 
           <Card className="shadow-soft animate-fade-in border-l-4 border-l-risk-high">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">High Risk</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">High Risk / उच्च जोखिम</CardTitle>
               <AlertTriangle className="h-4 w-4 text-risk-high" />
             </CardHeader>
             <CardContent>
@@ -110,7 +110,7 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
           <Card className="shadow-soft animate-fade-in border-l-4 border-l-risk-medium">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Medium Risk</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Medium Risk / मध्यम जोखिम</CardTitle>
               <TrendingUp className="h-4 w-4 text-risk-medium" />
             </CardHeader>
             <CardContent>
@@ -123,7 +123,7 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
 
           <Card className="shadow-soft animate-fade-in border-l-4 border-l-risk-low">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Low Risk</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Low Risk / कम जोखिम</CardTitle>
               <Calendar className="h-4 w-4 text-risk-low" />
             </CardHeader>
             <CardContent>
@@ -135,11 +135,85 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
           </Card>
         </div>
 
+        {/* Quick Insights */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <Card className="shadow-soft border-l-4 border-l-blue-500">
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center">
+                <TrendingUp className="h-5 w-5 mr-2 text-blue-500" />
+                Attendance Insights / उपस्थिति अंतर्दृष्टि
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-sm">Average Attendance / औसत उपस्थिति:</span>
+                  <span className="font-semibold">
+                    {((students.reduce((acc, s) => acc + s.attendance_rate_30, 0) / students.length) * 100).toFixed(1)}%
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Below 80% / 80% से कम:</span>
+                  <span className="font-semibold text-amber-600">
+                    {students.filter(s => s.attendance_rate_30 < 0.8).length} students / छात्र
+                  </span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-soft border-l-4 border-l-green-500">
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center">
+                <TrendingUp className="h-5 w-5 mr-2 text-green-500" />
+                Academic Performance / शैक्षणिक प्रदर्शन
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-sm">Average Score / औसत अंक:</span>
+                  <span className="font-semibold">
+                    {(students.reduce((acc, s) => acc + s.avg_score, 0) / students.length).toFixed(1)}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Below 50 / 50 से कम:</span>
+                  <span className="font-semibold text-red-600">
+                    {students.filter(s => s.avg_score < 50).length} students / छात्र
+                  </span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-soft border-l-4 border-l-purple-500">
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center">
+                <AlertTriangle className="h-5 w-5 mr-2 text-purple-500" />
+                Intervention Priority / हस्तक्षेप प्राथमिकता
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-sm">Immediate Action / तत्काल कार्रवाई:</span>
+                  <Badge variant="destructive">{riskStats.high}</Badge>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Monitor Closely / निकट निगरानी:</span>
+                  <Badge variant="secondary">{riskStats.medium}</Badge>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <span className="text-sm font-medium text-foreground flex items-center">
             <Filter className="h-4 w-4 mr-2" />
-            Filter by Risk Level:
+            Filter by Risk Level / जोखिम स्तर के अनुसार फ़िल्टर करें:
           </span>
           {["all", "high", "medium", "low"].map((risk) => (
             <Badge
@@ -205,8 +279,11 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
           <Card className="shadow-card bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 border-dashed">
             <CardContent className="py-8">
               <h3 className="text-xl font-semibold text-foreground mb-4">
-                Ready to help more students succeed? 🌟
+                Ready to track more students? / अधिक छात्रों को ट्रैक करने के लिए तैयार हैं? 📊
               </h3>
+              <p className="text-muted-foreground mb-6">
+                Add comprehensive analytics and intervention tracking for better outcomes / बेहतर परिणामों के लिए व्यापक विश्लेषण और हस्तक्षेप ट्रैकिंग जोड़ें
+              </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/upload">
                   <Button variant="hero">

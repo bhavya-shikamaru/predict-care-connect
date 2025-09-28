@@ -66,15 +66,15 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Student Directory</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Student Management / छात्र प्रबंधन</h1>
             <p className="text-muted-foreground">
-              Manage and monitor all students in your care
+              Comprehensive student directory with detailed search and filtering / विस्तृत खोज और फ़िल्टरिंग के साथ व्यापक छात्र निर्देशिका
             </p>
           </div>
           <Button asChild className="mt-4 md:mt-0">
             <Link to="/upload">
               <UserPlus className="h-4 w-4 mr-2" />
-              Add Students
+              Add Students / छात्र जोड़ें
             </Link>
           </Button>
         </div>
@@ -85,7 +85,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <Users className="h-4 w-4 mr-2" />
-                Total Students
+                Total Students / कुल छात्र
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -97,7 +97,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <AlertTriangle className="h-4 w-4 mr-2 text-risk-high" />
-                High Risk
+                High Risk / उच्च जोखिम
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -109,7 +109,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <AlertTriangle className="h-4 w-4 mr-2 text-risk-medium" />
-                Medium Risk
+                Medium Risk / मध्यम जोखिम
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -121,7 +121,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <CheckCircle className="h-4 w-4 mr-2 text-risk-low" />
-                Low Risk
+                Low Risk / कम जोखिम
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -135,10 +135,10 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Filter className="h-5 w-5 mr-2" />
-              Filter Students
+              Filter Students / छात्रों को फ़िल्टर करें
             </CardTitle>
             <CardDescription>
-              Search and filter students by name, risk level, or class
+              Search and filter students by name, risk level, or class / नाम, जोखिम स्तर या कक्षा के अनुसार छात्रों को खोजें और फ़िल्टर करें
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -147,7 +147,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search students..."
+                  placeholder="Search students... / छात्रों को खोजें..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10"
@@ -157,23 +157,23 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
               {/* Risk Level Filter */}
               <Select value={riskFilter} onValueChange={(value: any) => setRiskFilter(value)}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Filter by risk level" />
+                  <SelectValue placeholder="Filter by risk level / जोखिम स्तर के अनुसार फ़िल्टर करें" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Risk Levels</SelectItem>
-                  <SelectItem value="high">High Risk</SelectItem>
-                  <SelectItem value="medium">Medium Risk</SelectItem>
-                  <SelectItem value="low">Low Risk</SelectItem>
+                  <SelectItem value="all">All Risk Levels / सभी जोखिम स्तर</SelectItem>
+                  <SelectItem value="high">High Risk / उच्च जोखिम</SelectItem>
+                  <SelectItem value="medium">Medium Risk / मध्यम जोखिम</SelectItem>
+                  <SelectItem value="low">Low Risk / कम जोखिम</SelectItem>
                 </SelectContent>
               </Select>
 
               {/* Class Filter */}
               <Select value={classFilter} onValueChange={setClassFilter}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Filter by class" />
+                  <SelectValue placeholder="Filter by class / कक्षा के अनुसार फ़िल्टर करें" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Classes</SelectItem>
+                  <SelectItem value="all">All Classes / सभी कक्षाएं</SelectItem>
                   {uniqueClasses.map(klass => (
                     <SelectItem key={klass} value={klass}>{klass}</SelectItem>
                   ))}
@@ -186,7 +186,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
                 onClick={clearFilters}
                 disabled={searchTerm === "" && riskFilter === "all" && classFilter === "all"}
               >
-                Clear Filters
+                Clear Filters / फ़िल्टर साफ़ करें
               </Button>
             </div>
 
@@ -281,10 +281,10 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
           <Card className="shadow-soft bg-gradient-primary text-white">
             <CardContent className="text-center py-8">
               <h3 className="text-lg font-semibold mb-2">
-                Ready to help more students succeed? 🌟
+                Ready to help more students succeed? / अधिक छात्रों को सफल बनाने के लिए तैयार हैं? 🌟
               </h3>
               <p className="mb-4 opacity-90">
-                Add more student data to get comprehensive risk assessments and personalized interventions.
+                Add more student data to get comprehensive risk assessments and personalized interventions / व्यापक जोखिम मूल्यांकन और व्यक्तिगत हस्तक्षेप प्राप्त करने के लिए अधिक छात्र डेटा जोड़ें
               </p>
               <Button variant="secondary" asChild>
                 <Link to="/upload">Add More Students</Link>

@@ -20,8 +20,8 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
             <GraduationCap className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="font-bold text-lg text-foreground">UMEED</h1>
-            <p className="text-xs text-muted-foreground">Student Success Platform</p>
+            <h1 className="font-bold text-lg text-foreground">UMEED / उमीद</h1>
+            <p className="text-xs text-muted-foreground">Student Success Platform / छात्र सफलता मंच</p>
           </div>
         </Link>
 
@@ -34,7 +34,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                   location.pathname === "/dashboard" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                Dashboard
+                Dashboard / डैशबोर्ड
               </Link>
               <Link
                 to="/students"
@@ -42,7 +42,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                   location.pathname === "/students" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                Students
+                Students / छात्र
               </Link>
               <Link
                 to="/upload"
@@ -50,7 +50,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                   location.pathname === "/upload" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                Data Upload
+                Data Upload / डेटा अपलोड
               </Link>
             </>
           )}
@@ -73,13 +73,13 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
                 className="text-muted-foreground hover:text-foreground"
               >
                 <LogOut className="h-4 w-4" />
-                Logout
+                Logout / लॉगआउट
               </Button>
             </>
           ) : (
             <Link to="/login">
               <Button variant="default" size="sm">
-                Login
+                Login / लॉगिन
               </Button>
             </Link>
           )}
