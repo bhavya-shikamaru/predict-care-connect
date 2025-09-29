@@ -20,7 +20,7 @@ export const Header = ({ onLogout, user }: HeaderProps) => {
             <GraduationCap className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="font-bold text-lg text-foreground">UMEED / उमीद</h1>
+            <h1 className="font-bold text-lg text-foreground">UMEED</h1>
             <p className="text-xs text-muted-foreground">Student Success Platform / छात्र सफलता मंच</p>
           </div>
         </Link>

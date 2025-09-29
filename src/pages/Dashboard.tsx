@@ -67,17 +67,17 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
               disabled={isRefreshing}
             >
               <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-              Refresh Data
+              Refresh Data / डेटा रीफ्रेश करें
             </Button>
             <Link to="/upload">
               <Button variant="outline">
                 <Plus className="h-4 w-4" />
-                Add Students
+                Add Students / छात्र जोड़ें
               </Button>
             </Link>
             <Button variant="outline">
               <Download className="h-4 w-4" />
-              Export Report
+              Export Report / रिपोर्ट निर्यात करें
             </Button>
           </div>
         </div>
@@ -288,12 +288,12 @@ export const Dashboard = ({ students = sampleStudents, onStudentSelect }: Dashbo
                 <Link to="/upload">
                   <Button variant="hero">
                     <Plus className="h-4 w-4" />
-                    Upload Student Data
+                    Upload Student Data / छात्र डेटा अपलोड करें
                   </Button>
                 </Link>
                 <Button variant="outline">
                   <Download className="h-4 w-4" />
-                  Download Template
+                  Download Template / टेम्पलेट डाउनलोड करें
                 </Button>
               </div>
             </CardContent>

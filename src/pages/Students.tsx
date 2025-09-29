@@ -255,11 +255,11 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
               </p>
               {students.length === 0 ? (
                 <Button asChild>
-                  <Link to="/upload">Add Your First Student</Link>
+                  <Link to="/upload">Add Your First Student / अपना पहला छात्र जोड़ें</Link>
                 </Button>
               ) : (
                 <Button variant="outline" onClick={clearFilters}>
-                  Clear Filters
+                  Clear Filters / फ़िल्टर साफ़ करें
                 </Button>
               )}
             </CardContent>
@@ -287,7 +287,7 @@ export const Students = ({ students, onStudentSelect }: StudentsProps) => {
                 Add more student data to get comprehensive risk assessments and personalized interventions / व्यापक जोखिम मूल्यांकन और व्यक्तिगत हस्तक्षेप प्राप्त करने के लिए अधिक छात्र डेटा जोड़ें
               </p>
               <Button variant="secondary" asChild>
-                <Link to="/upload">Add More Students</Link>
+                <Link to="/upload">Add More Students / अधिक छात्र जोड़ें</Link>
               </Button>
             </CardContent>
           </Card>
