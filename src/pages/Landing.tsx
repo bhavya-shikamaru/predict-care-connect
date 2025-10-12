@@ -59,14 +59,16 @@ export const Landing = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-hero opacity-5"></div>
+      <section className="relative py-24 px-4 overflow-hidden bg-gradient-subtle">
+        <div className="absolute inset-0 bg-gradient-hero opacity-[0.03]"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
         <div className="container mx-auto text-center relative z-10">
           <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="font-heading text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight text-balance">
               Every Student Counts.
               <br />
-              <span className="bg-gradient-hero bg-clip-text text-transparent">
+              <span className="gradient-text">
                 Predict, Prevent, Support.
               </span>
             </h1>
@@ -91,32 +93,32 @@ export const Landing = () => {
 
           {/* Hero Image */}
           <div className="animate-slide-up animation-delay-300">
-            <div className="relative max-w-4xl mx-auto">
+            <div className="relative max-w-5xl mx-auto group">
+              <div className="absolute -inset-1 bg-gradient-hero opacity-20 blur-2xl rounded-3xl group-hover:opacity-30 transition-opacity duration-500"></div>
               <img 
                 src={heroImage} 
                 alt="Students learning together in a supportive environment"
-                className="rounded-2xl shadow-card w-full"
+                className="relative rounded-3xl shadow-elevated w-full ring-1 ring-border/50"
               />
-              <div className="absolute inset-0 bg-gradient-primary opacity-10 rounded-2xl"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 bg-muted/30">
+      <section className="py-20 px-4 bg-muted/20">
         <div className="container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <Card key={index} className="text-center shadow-soft animate-fade-in border-0">
-                <CardContent className="pt-6">
-                  <div className="flex justify-center mb-3">
-                    <div className="p-3 bg-primary/10 rounded-full text-primary">
+              <Card key={index} className="text-center border-0 bg-card/50 backdrop-blur-sm hover-lift animate-fade-in group">
+                <CardContent className="pt-8 pb-6">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-4 bg-gradient-primary rounded-2xl text-white shadow-primary group-hover:scale-110 transition-transform duration-300">
                       {stat.icon}
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-1">{stat.value}</h3>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  <h3 className="font-heading text-3xl font-bold text-foreground mb-2">{stat.value}</h3>
+                  <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
                 </CardContent>
               </Card>
             ))}
@@ -125,29 +127,31 @@ export const Landing = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+      <section className="py-24 px-4 relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/3 rounded-full blur-3xl"></div>
+        <div className="container mx-auto relative">
+          <div className="text-center mb-20">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
               Comprehensive Student Success Platform
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Our AI-powered system provides educators with the tools they need to support every student's journey to success.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="shadow-card hover:shadow-lg transition-smooth animate-fade-in group">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-smooth">
+              <Card key={index} className="border-border/50 bg-card/80 backdrop-blur-sm hover-lift animate-fade-in group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-[0.02] transition-opacity duration-300"></div>
+                <CardHeader className="relative">
+                  <div className="flex items-start space-x-4">
+                    <div className="p-3 bg-gradient-primary rounded-xl text-white shadow-soft group-hover:shadow-primary group-hover:scale-110 transition-all duration-300">
                       {feature.icon}
                     </div>
-                    <CardTitle className="text-lg">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg font-heading pt-2">{feature.title}</CardTitle>
                   </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative">
                   <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
@@ -157,25 +161,27 @@ export const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-hero">
-        <div className="container mx-auto text-center">
+      <section className="relative py-24 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-hero"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20"></div>
+        <div className="container mx-auto text-center relative z-10">
           <div className="animate-fade-in">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
               Ready to Transform Student Outcomes?
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white/95 mb-10 max-w-2xl mx-auto leading-relaxed">
               Join thousands of educators who are already using UMEED to identify at-risk students 
               and provide timely interventions that change lives.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link to="/login">
-                <Button variant="secondary" size="lg" className="shadow-lg">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/95 shadow-elevated hover:shadow-glow hover:scale-105 font-semibold">
                   Start Your Free Trial
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/demo">
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                <Button variant="outline" size="lg" className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 font-semibold">
                   Schedule Demo
                 </Button>
               </Link>

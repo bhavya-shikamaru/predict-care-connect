@@ -72,17 +72,25 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['Poppins', 'Inter', 'ui-sans-serif', 'sans-serif'],
+      },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
         "gradient-hero": "var(--gradient-hero)",
+        "gradient-subtle": "var(--gradient-subtle)",
         "gradient-risk-high": "var(--gradient-risk-high)",
         "gradient-risk-medium": "var(--gradient-risk-medium)",
         "gradient-risk-low": "var(--gradient-risk-low)",
+        "gradient-glass": "var(--gradient-glass)",
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",
+        elevated: "var(--shadow-elevated)",
         primary: "var(--shadow-primary)",
+        glow: "var(--shadow-glow)",
       },
       transitionProperty: {
         smooth: "var(--transition-smooth)",
@@ -113,9 +121,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out",
-        "slide-up": "slide-up 0.4s ease-out",
-        "scale-in": "scale-in 0.3s ease-out",
+        "fade-in": "fade-in 0.6s ease-out forwards",
+        "slide-up": "slide-up 0.5s ease-out forwards",
+        "scale-in": "scale-in 0.4s ease-out forwards",
       },
     },
   },
