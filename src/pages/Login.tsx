@@ -53,14 +53,14 @@ export const Login = ({ onLogin }: LoginProps) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5 flex items-center justify-center p-4">
       <div className="w-full max-w-md animate-scale-in">
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="p-4 bg-gradient-hero rounded-2xl shadow-primary">
-              <GraduationCap className="h-8 w-8 text-white" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex justify-center mb-3 sm:mb-4">
+            <div className="p-3 sm:p-4 bg-gradient-hero rounded-xl sm:rounded-2xl shadow-primary">
+              <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome to UMEED</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Welcome to UMEED</h1>
+          <p className="text-sm sm:text-base text-muted-foreground px-4">
             Sign in to start supporting student success with AI-powered insights
           </p>
         </div>
